@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "737918878705",
+    "firebase_url": "https://tiempoextra-7d83f-default-rtdb.firebaseio.com",
+    "project_id": "tiempoextra-7d83f",
+    "storage_bucket": "tiempoextra-7d83f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737918878705:android:2dbdb18b5ac6dda8eb7a50",
+        "android_client_info": {
+          "package_name": "com.optic.overtime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737918878705-3adnrj0htdum8k11f4dl5hbt7b4m5dmj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.optic.overtime",
+            "certificate_hash": "1edcdd9d9fd73a81e981bec66879805341b0fc0e"
+          }
+        },
+        {
+          "client_id": "737918878705-j2t4bkemirbq9fu2b49cc6mvvbat3c6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL4VGes4fNLj4M8-nSx4UbXD_WYOa1zbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737918878705-j2t4bkemirbq9fu2b49cc6mvvbat3c6r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

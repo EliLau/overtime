@@ -25,12 +25,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class MostrarDetalles extends AppCompatActivity {
 
     private EditText etNumemp, etNombre, etcodebar;
     private DatabaseReference mDatabase;
     private ImageView imvBuscar, imvScan;
     private Button mbtAgregar, btLimpiar;
+    public ArrayList<ListaExcel> listaExcels = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,13 @@ public class MostrarDetalles extends AppCompatActivity {
         
         botonEnviar();
         limpiarInput();
+
+        mbtAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Lista();
+            }
+        });
 
     }
 
@@ -207,5 +218,9 @@ public class MostrarDetalles extends AppCompatActivity {
             }
         });
 
+    }
+    public void Lista(){
+        listaExcels.add(new ListaExcel(etNombre.getText().toString(),etNumemp.getText().toString()));
+        Toast.makeText(this, listaExcels.get(listaExcels.size()-1).getNombre(), Toast.LENGTH_SHORT).show();
     }
 }

@@ -77,16 +77,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/white">
+
                 <EditText
                     android:id="@+id/etxtNombre"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="20dp"
                     android:hint="Nombre"
+                    android:inputType="none"
                     android:textIsSelectable="false"
-                    android:clickable="true"
-                    android:focusable="false"
-                    android:inputType="none"/>
+                    android:textSize="20dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -123,17 +122,17 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:boxBackgroundColor="@color/white">
+
                             <EditText
                                 android:id="@+id/etxCodebar"
 
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:textSize="20dp"
-                                android:hint="Codebar"
-                                android:textIsSelectable="false"
-                                android:clickable="true"
                                 android:focusable="false"
-                                android:inputType="none"/>
+                                android:hint="Codebar"
+                                android:inputType="none"
+                                android:textIsSelectable="false"
+                                android:textSize="20dp" />
 
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>

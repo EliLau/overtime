@@ -47,12 +47,12 @@
 
                     <EditText
                         android:id="@+id/etxtNumEmp"
-                        android:inputType="number"
-                        android:layout_width="330dp"
+                        android:layout_width="290dp"
                         android:layout_height="match_parent"
+                        android:hint="Número de empleado"
+                        android:inputType="number"
                         android:singleLine="true"
-                        android:textSize="20dp"
-                        android:hint="Número de empleado"/>
+                        android:textSize="20dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
@@ -65,7 +65,7 @@
 
                     <ImageButton
                         android:id="@+id/imbSearch"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/ic_search" />
@@ -128,7 +128,6 @@
 
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:focusable="false"
                                 android:hint="Codebar"
                                 android:inputType="none"
                                 android:textIsSelectable="false"
@@ -153,6 +152,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Limpiar"/>
+
+            <Button
+                android:id="@+id/BTNverlista"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver Lista" />
+
+            <Button
+                android:id="@+id/BTNvaciarlista"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vaciar Lista" />
+
+            <Button
+                android:id="@+id/BTNexcel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Generar Excel" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

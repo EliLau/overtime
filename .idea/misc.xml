@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/edgar/AndroidStudioProjects/overtime/app/src/main/res/layout/activity_crud.xml" value="0.22" />
+        <entry key="..\:/Users/edgar/AndroidStudioProjects/overtime/app/src/main/res/layout/activity_excel_list.xml" value="0.1453804347826087" />
         <entry key="..\:/Users/edgar/AndroidStudioProjects/overtime/app/src/main/res/layout/activity_list.xml" value="0.22" />
         <entry key="..\:/Users/edgar/AndroidStudioProjects/overtime/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/edgar/AndroidStudioProjects/overtime/app/src/main/res/layout/activity_mostrar_detalles.xml" value="0.22" />
         <entry key="..\:/Users/edgar/AndroidStudioProjects/overtime/app/src/main/res/layout/activity_registrar.xml" value="0.12" />
+        <entry key="..\:/Users/edgar/AndroidStudioProjects/overtime/app/src/main/res/layout/excel_list.xml" value="0.1453804347826087" />
         <entry key="..\:/Users/edgar/AndroidStudioProjects/overtime/app/src/main/res/layout/list_element.xml" value="0.1" />
       </map>
     </option>

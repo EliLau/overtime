@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -25,16 +26,28 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MostrarDetalles extends AppCompatActivity {
 
     private EditText etNumemp, etNombre, etcodebar;
     private DatabaseReference mDatabase;
     private ImageView imvBuscar, imvScan;
-    private Button mbtAgregar, btLimpiar;
-    public ArrayList<ListaExcel> listaExcels = new ArrayList<>();
+    private Button mbtAgregar, btLimpiar,btnlista,btngenerarexcel,btnvaciarlista;
+    public static ArrayList<ListaExcel> listaExcels = new ArrayList<>();
+    File filePath = new File(Environment.getExternalStorageDirectory() + "/Lista_Empleados.xls");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +64,10 @@ public class MostrarDetalles extends AppCompatActivity {
         mbtAgregar = (Button)findViewById(R.id.btnAgregar);
         btLimpiar = (Button)findViewById(R.id.btnLimpiar);
 
+        btnlista = findViewById(R.id.BTNverlista);
+        btngenerarexcel = findViewById(R.id.BTNexcel);
+        btnvaciarlista = findViewById(R.id.BTNvaciarlista);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         botonBuscar();
@@ -66,6 +83,81 @@ public class MostrarDetalles extends AppCompatActivity {
             }
         });
 
+        btnlista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent (MostrarDetalles.this, ExcelList.class);
+                startActivity(intent);
+            }
+        });
+
+        btngenerarexcel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                generar_excel();
+            }
+        });
+        btnvaciarlista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listaExcels.clear();
+            }
+        });
+    }
+
+    public void generar_excel() {
+
+        Workbook workbook = new HSSFWorkbook();
+
+        Sheet sheet;
+        Row row;
+
+        String EXCEL_SHEET_NAME = "Asistencia_Alumnos";
+
+        sheet = workbook.createSheet(EXCEL_SHEET_NAME);
+        int row1 = 1;
+
+        int celda = 0;
+        int recorrido = 0;
+        row = sheet.createRow(0);
+        row.createCell(0).setCellValue("ID");
+        row.createCell(1).setCellValue("Nombre");
+        row.createCell(2).setCellValue("CodeBar");
+
+        for (int i = 0; i < listaExcels.size(); i++) {
+
+            row = sheet.createRow(row1);
+            row.createCell(0)
+                    .setCellValue(listaExcels.get(recorrido).getId());
+            row.createCell(1).setCellValue(listaExcels.get(recorrido).getNombre());
+            row.createCell(2).setCellValue(listaExcels.get(recorrido).getCodebar());
+            row1++;
+            recorrido++;
+
+
+        }
+        try {
+
+
+
+        if (!filePath.exists()) {
+            filePath.createNewFile();
+
+        }
+
+        FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+        workbook.write(fileOutputStream);
+
+        if (fileOutputStream != null) {
+            fileOutputStream.flush();
+            fileOutputStream.close();
+        }
+
+            Toast.makeText(this, "Excel Generado Exitosamente", Toast.LENGTH_SHORT).show();
+        
+        }catch (Exception e){
+            Toast.makeText(this, e+"", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void botonEnviar() {
@@ -220,7 +312,8 @@ public class MostrarDetalles extends AppCompatActivity {
 
     }
     public void Lista(){
-        listaExcels.add(new ListaExcel(etNombre.getText().toString(),etNumemp.getText().toString()));
+        listaExcels.add(new ListaExcel(etNombre.getText().toString(),etNumemp.getText().toString(),
+                etcodebar.getText().toString()));
         Toast.makeText(this, listaExcels.get(listaExcels.size()-1).getNombre(), Toast.LENGTH_SHORT).show();
     }
 }
